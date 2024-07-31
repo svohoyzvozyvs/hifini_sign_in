@@ -131,7 +131,6 @@ def start(sign, cookie):
                 print("等待20秒后进行重试...")
                 time.sleep(20)
 
-
 # 定义主函数
 def main():
     cookies_list = os.getenv("HIFINI_COOKIE")
