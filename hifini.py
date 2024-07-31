@@ -58,7 +58,7 @@ def start(sign, cookie):
     msg = ""
     while retries < max_retries:
         try:
-            msg += "第{}次执行签到\n".format(str(retries+1))
+            msg += "第{}次执行签到\n".format(str(retries + 1))
             sign_in_url = "https://www.hifini.com/sg_sign.htm"
             headers = {
                 'Cookie': cookie,
@@ -121,7 +121,7 @@ def start(sign, cookie):
                 print("等待20秒后进行重试...")
                 time.sleep(20)
         except Exception as e:
-            print("签到失败，失败原因:"+str(e))
+            print("签到失败，失败原因:" + str(e))
             send("hifini 签到结果", str(e))
             retries += 1
             if retries >= max_retries:
@@ -132,10 +132,24 @@ def start(sign, cookie):
                 time.sleep(20)
 
 
+# 定义主函数
+def main():
+    cookies_list = os.getenv("HIFINI_COOKIE")
+    if cookies_list is None:
+        print("当前只有一个账户,执行签到")
+        sign = get_sign_value(cookies_list)
+        start(sign, cookies_list)
+        return None
+
+    cookies_list = cookies_list.split("&")
+    for cookie in cookies_list:
+        print(f"正在为账户 {cookie} 执行签到...")
+        sign = get_sign_value(cookie)
+        if sign:
+            start(sign, cookie)
+        else:
+            print(f"账户 {cookie} 签到失败：没有获取到签名")
+            send("hifini 签到异常", f"账户 {cookie} 签到失败：没有获取到签名")
+
 if __name__ == "__main__":
-    cookie = os.getenv("HIFINI_COOKIE")
-    sign = get_sign_value(cookie)
-    if sign:
-        start(sign, cookie)
-    else:
-        send("hifini 签到异常", "hifini 签到失败：没有获取到签名，请联系开发人员")
+    main()
