@@ -33,7 +33,7 @@ def get_sign_value(cookies):
     }
 
     response = requests.get(
-        'https://www.hifini.com/sg_sign.htm', headers=headers)
+        'https://hifiti.com/sg_sign-list.htm', headers=headers)
     # print(response.text)
 
     pattern = r'var sign = "([\da-f]+)"'
@@ -59,7 +59,7 @@ def start(sign, cookie):
     while retries < max_retries:
         try:
             msg += "第{}次执行签到\n".format(str(retries + 1))
-            sign_in_url = "https://www.hifini.com/sg_sign.htm"
+            sign_in_url = "https://hifiti.com/sg_sign-list.htm"
             headers = {
                 'Cookie': cookie,
                 'authority': 'www.hifini.com',
