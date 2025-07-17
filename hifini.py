@@ -89,7 +89,7 @@ def start(cookie):
 
 # 定义主函数
 def main():
-    cookies_list = "bbs_sid=tq3c3gi9636qefq6minmibgolm; Hm_lvt_23819a3dd53d3be5031ca942c6cbaf25=1752769373; HMACCOUNT=D950909B4A045D9A; bbs_token=YfhKBe3acvHulGtl5wMW6e_2BwmwFkAHpwXWBFqkIhCeFhspOtYiWn9VPxSpz_2FBzASfDBNLb3DvWMYa6yQr8WgVDvT6u4_3D; Hm_lpvt_23819a3dd53d3be5031ca942c6cbaf25=1752769407&bbs_sid=ig8bm7lhvr3jnjn0e7athgfbkf; Hm_lvt_23819a3dd53d3be5031ca942c6cbaf25=1752769441; Hm_lpvt_23819a3dd53d3be5031ca942c6cbaf25=1752769441; HMACCOUNT=A2505D568679CAA0; bbs_token=IeDAeedF4wNxDE43ICYsXSOPkc8WIk6eAifcyPIVgRENlb_2BvXST2GsEyAR6vVyJ2KzoIIl7HlYVwtmkQPNK_2B86m7qZ4_3D&bbs_sid=2dr43t8rop6biki8pk614413ca; Hm_lvt_23819a3dd53d3be5031ca942c6cbaf25=1752769478; HMACCOUNT=507DA5D7807045EF; bbs_token=He3OFZF8TB_2Bk2sEE7gCTRBoxRpuI3s9CUQw_2FgwSicngZ0S1gTWMvDSUTljpI50wh_2BvfBfgmNKuwq4aWpc5DyklyXa4s_3D; Hm_lpvt_23819a3dd53d3be5031ca942c6cbaf25=1752769483&bbs_sid=qcpafnm6n7d754h6vvqdlo2tie; Hm_lvt_23819a3dd53d3be5031ca942c6cbaf25=1752769515; HMACCOUNT=1D73F417000091B0; bbs_token=OOb6m3BxgDoHJzN4UI6WvbKRWrw1DzIRSlfid6mAX6iwVD3Or7rX1yyZz39wB5mbw5ySsYKTS1JtqvrRMNCPsF987Fk_3D; Hm_lpvt_23819a3dd53d3be5031ca942c6cbaf25=1752769520"
+    cookies_list = os.getenv("HIFINI_COOKIE")
     if not cookies_list:
         print("请在脚本中设置cookies")
         return
